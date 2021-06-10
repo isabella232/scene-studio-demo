@@ -1,0 +1,22 @@
+overwrite: true
+schema: "src/graphql/schema.sdl.ts"
+generates:
+  src/generated/graphql/resolvers.ts:
+    plugins:
+      - add:
+          content: "/* eslint-disable */"
+      - typescript
+      - typescript-resolvers
+    config:
+      wrapFieldDefinitions: true
+      noSchemaStitching: true
+      useIndexSignature: true
+      contextType: ../../graphql/context#GraphQLContext
+  src/generated/graphql/react.ts:
+    documents: "src/**/!(*.d).{ts,tsx}"
+    plugins:
+      - add:
+          content: "/* eslint-disable */"
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
