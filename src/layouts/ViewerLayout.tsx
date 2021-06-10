@@ -21,7 +21,7 @@ export function ViewerLayout({
       <div className="h-full w-full grid grid-cols-sidebar-16 grid-rows-header-6">
         <div className="col-span-full">
           <Header>
-            <div className="ml-4 mr-auto">
+            <div className="flex justify-between w-full">
               {mutationsEnabled && (
                 <button
                   className="btn btn-primary text-sm"
@@ -33,6 +33,14 @@ export function ViewerLayout({
                 </button>
               )}
             </div>
+            <a
+              href="https://github.com/Vertexvis/scene-studio-demo"
+              rel="noreferrer"
+              className="w-32 text-blue-600 hover:underline"
+              target="_blank"
+            >
+              View on GitHub
+            </a>
           </Header>
         </div>
         <div className="row-start-2 row-span-full col-span-1">{sidebar}</div>
