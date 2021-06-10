@@ -3,7 +3,7 @@ import { Camera } from "@vertexvis/viewer/dist/types/scenes";
 import * as Math3d from "math3d";
 
 import { SceneViewItem, Transform } from "../generated/graphql/react";
-import { rotation,scale } from "./math3d";
+import { rotation, scale } from "./math3d";
 
 export const calculateTranslation = (
   camera: Camera,

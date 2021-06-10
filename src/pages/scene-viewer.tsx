@@ -15,8 +15,9 @@ import { Panel } from "../page-content/SceneViewer/Panel";
 import { PrimarySidebar } from "../page-content/SceneViewer/PrimarySidebar";
 import { SceneItemSidebar } from "../page-content/SceneViewer/SceneItemSidebar";
 
+export const ViewerId = "vertex-viewer-id";
+
 const MonoscopicViewer = fetchItemOnTap(Viewer);
-const ViewerId = "vertex-viewer-id";
 
 interface ViewerConfig extends ViewerJSX.VertexSceneTree {
   mutationsEnabled: boolean;

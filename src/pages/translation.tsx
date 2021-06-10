@@ -3,25 +3,34 @@ import { defineCustomElements } from "@vertexvis/viewer-react";
 import React from "react";
 
 import { fetchItemOnTap, Viewer } from "../components/Viewer";
-import { SiteLayout } from "../layouts/SiteLayout";
 import { config } from "../lib/config";
 import { cache } from "../lib/graphql";
 import { useSceneStudio } from "../lib/scene-studio";
 import { deselectItem, selectItem } from "../lib/undo-commands";
 import { translateOnMove } from "../page-content/Translation/TranslateOnMove";
+import { ViewerId } from "./scene-viewer";
 
 const DraggablePartsViewer = translateOnMove(fetchItemOnTap(Viewer));
 
 interface ViewerConfig {
+  mutationsEnabled: boolean;
   vertexEnv: Environment;
 }
 
 export const getServerSideProps = (): Record<string, ViewerConfig> => {
-  return { props: { vertexEnv: config.vertexEnv } };
+  return {
+    props: {
+      mutationsEnabled: config.mutationsEnabled,
+      vertexEnv: config.vertexEnv,
+    },
+  };
 };
 
-function Translation({ vertexEnv }: ViewerConfig): JSX.Element {
-  const studioApp = useSceneStudio(cache);
+function Translation({
+  mutationsEnabled,
+  vertexEnv,
+}: ViewerConfig): JSX.Element {
+  const studioApp = useSceneStudio(cache, mutationsEnabled);
   const { viewerCtx, state, dispatch, undoStack } = studioApp;
 
   React.useEffect(() => {
@@ -29,17 +38,20 @@ function Translation({ vertexEnv }: ViewerConfig): JSX.Element {
   });
 
   return (
-    <SiteLayout>
+    <main>
       <div className="w-screen h-screen">
         {vertexEnv && state.clientId && state.streamKey && (
           <DraggablePartsViewer
             viewer={viewerCtx.viewer}
+            viewerId={ViewerId}
             sceneViewId={viewerCtx.viewerState.sceneViewId}
             undoStack={undoStack}
             cache={cache}
             configEnv={vertexEnv}
-            clientId={state.clientId}
-            streamKey={state.streamKey}
+            credentials={{
+              clientId: state.clientId,
+              streamKey: state.streamKey,
+            }}
             selectedItemId={state.selectedItemId}
             onSceneReady={viewerCtx.onSceneReady}
             onSelect={(item) => {
@@ -62,7 +74,7 @@ function Translation({ vertexEnv }: ViewerConfig): JSX.Element {
           />
         )}
       </div>
-    </SiteLayout>
+    </main>
   );
 }
 
