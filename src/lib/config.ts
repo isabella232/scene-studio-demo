@@ -3,7 +3,6 @@ import { Environment } from "@vertexvis/viewer/dist/types/config/environment";
 import { getBool, getString } from "./envVars";
 
 interface Configuration {
-  local: boolean;
   mutationsEnabled: boolean;
   vertexEnv: Environment;
   clientId: string;
@@ -12,12 +11,10 @@ interface Configuration {
   sceneTreeHost: string;
 }
 
-const local = getBool("LOCAL", false);
 const vertexEnv = getString("VERTEX_ENV", "platprod");
 const mutationsEnabled = getBool("MUTATIONS_ENABLED", true);
 
 export const config: Configuration = {
-  local,
   mutationsEnabled,
   vertexEnv: vertexEnv as Environment,
   clientId: getString("VERTEX_CLIENT_ID", ""),

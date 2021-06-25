@@ -14,14 +14,12 @@ import {
   SceneViewItemQuery,
   SceneViewItemQueryVariables,
 } from "../generated/graphql/react";
-import { config } from "./config";
 
 export const cache = new InMemoryCache();
 
 export const client = new ApolloClient({
-  uri: config.local
-    ? "http://localhost:3000/api/graphql"
-    : "https://scene-studio.vertexvis.io/api/graphql",
+  uri: "https://scene-studio.vertexvis.io/api/graphql",
+  // uri: "http://localhost:3000/api/graphql",
   cache,
 });
 

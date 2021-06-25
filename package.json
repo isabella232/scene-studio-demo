@@ -12,11 +12,11 @@
     "graphql": "^15.5",
     "lodash.isequal": "^4.5",
     "math3d": "^0.2",
-    "next": "^10.2",
+    "next": "^11.0",
     "react": "^17.0",
     "react-dom": "^17.0",
-    "tailwindcss": "^2.1",
-    "tslib": "^2.2"
+    "tailwindcss": "^2.2",
+    "tslib": "^2.3"
   },
   "devDependencies": {
     "@graphql-codegen/add": "^2.0",
@@ -29,13 +29,14 @@
     "@tailwindcss/forms": "^0.3",
     "@tailwindcss/typography": "^0.4",
     "@types/math3d": "^0.2",
-    "@types/node": "^15.12.2",
+    "@types/node": "^15.12.4",
     "@types/react": "^17.0",
     "@types/react-dom": "^17.0",
-    "@typescript-eslint/eslint-plugin": "^4.26.1",
-    "@typescript-eslint/parser": "^4.26.1",
+    "@typescript-eslint/eslint-plugin": "^4.28.0",
+    "@typescript-eslint/parser": "^4.28.0",
     "autoprefixer": "^10.2",
-    "eslint": "^7.28",
+    "eslint": "^7.29",
+    "eslint-config-next": "^11.0.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
@@ -51,7 +52,7 @@
     "dev": "next",
     "format": "prettier --write './**/*.+(js|jsx|ts|tsx|json|yml|yaml|md|mdx|html|css)'",
     "generate:graphql": "graphql-codegen --config graphql-codegen.yml",
-    "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
+    "lint": "next lint",
     "start": "next start"
   }
 }
