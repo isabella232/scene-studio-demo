@@ -1,7 +1,7 @@
 import { gql, InMemoryCache } from "@apollo/client";
 import { Color } from "@vertexvis/utils";
 import { ColorMaterial } from "@vertexvis/viewer";
-import { SceneItemOperationsBuilder } from "@vertexvis/viewer/dist/types/scenes";
+import { SceneItemOperationsBuilder } from "@vertexvis/viewer/dist/types/lib/scenes";
 import React, { Dispatch as ReactDispatch } from "react";
 
 import { SceneViewItem, Transform } from "../generated/graphql/react";

@@ -1,4 +1,4 @@
-import { head } from "@vertexvis/vertex-api-client";
+import { head } from "@vertexvis/api-client-node";
 import { useRouter } from "next/router";
 import React from "react";
 

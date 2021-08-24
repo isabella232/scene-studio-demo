@@ -1,10 +1,10 @@
-import { Color } from "@vertexvis/utils";
 import {
   ColorMaterial as ApiColorMaterial,
   SceneItemData,
   SceneItemOverrideData,
   SceneViewItem as ApiSceneViewItem,
-} from "@vertexvis/vertex-api-client";
+} from "@vertexvis/api-client-node";
+import { Color } from "@vertexvis/utils";
 
 import {
   ColorMaterial,

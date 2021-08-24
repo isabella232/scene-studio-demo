@@ -1,5 +1,10 @@
-import { TapEventDetails } from "@vertexvis/viewer/dist/types/interactions/tapEventDetails";
-import { JSX as ViewerJSX, VertexViewer } from "@vertexvis/viewer-react";
+import { TapEventDetails } from "@vertexvis/viewer";
+import {
+  JSX as ViewerJSX,
+  VertexViewer,
+  VertexViewerToolbar,
+  VertexViewerViewCube,
+} from "@vertexvis/viewer-react";
 import React, { RefAttributes } from "react";
 
 import { SceneViewItem } from "../generated/graphql/react";
@@ -18,6 +23,8 @@ export type ViewerComponentType = React.ComponentType<
 
 export type HOCViewerProps = RefAttributes<HTMLVertexViewerElement>;
 
+export const AnimationDurationMs = 1500;
+
 export function Viewer({
   credentials,
   viewer,
@@ -32,7 +39,14 @@ export function Viewer({
       src={`urn:vertexvis:stream-key:${credentials.streamKey}`}
       id={viewerId}
       {...props}
-    />
+    >
+      <VertexViewerToolbar placement="top-right">
+        <VertexViewerViewCube
+          animationDuration={AnimationDurationMs}
+          viewer={viewer.current ?? undefined}
+        />
+      </VertexViewerToolbar>
+    </VertexViewer>
   );
 }
 

@@ -1,4 +1,4 @@
-import { VertexClient } from "@vertexvis/vertex-api-client";
+import { VertexClient } from "@vertexvis/api-client-node";
 
 export interface GraphQLContext {
   vertexApi: VertexClient;

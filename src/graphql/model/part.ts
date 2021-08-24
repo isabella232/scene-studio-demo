@@ -1,4 +1,4 @@
-import { Part as ApiPart } from "@vertexvis/vertex-api-client";
+import { Part as ApiPart } from "@vertexvis/api-client-node";
 
 import { Part } from "../../generated/graphql/react";
 

@@ -1,5 +1,5 @@
 import { Dimensions, Point, Vector3 } from "@vertexvis/geometry";
-import { Camera } from "@vertexvis/viewer/dist/types/scenes";
+import { Camera } from "@vertexvis/viewer/dist/types/lib/scenes";
 import * as Math3d from "math3d";
 
 import { SceneViewItem, Transform } from "../generated/graphql/react";

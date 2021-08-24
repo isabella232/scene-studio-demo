@@ -1,4 +1,4 @@
-import { Matrix4 } from "@vertexvis/vertex-api-client";
+import { Matrix4 } from "@vertexvis/api-client-node";
 
 import { Transform } from "../../generated/graphql/react";
 import { rotation, scale, translation } from "../../lib/math3d";

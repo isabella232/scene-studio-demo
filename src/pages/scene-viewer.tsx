@@ -1,4 +1,4 @@
-import { Environment } from "@vertexvis/viewer/dist/types/config/environment";
+import { Environment } from "@vertexvis/viewer";
 import { JSX as ViewerJSX, VertexSceneTree } from "@vertexvis/viewer-react";
 import React from "react";
 
@@ -91,7 +91,6 @@ export default function SceneViewer({
               <VertexSceneTree
                 configEnv={vertexEnv}
                 ref={ref}
-                selectionDisabled={true}
                 viewerSelector={`#${ViewerId}`}
               />
             </div>

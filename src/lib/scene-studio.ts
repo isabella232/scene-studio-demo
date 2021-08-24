@@ -1,5 +1,5 @@
 import { InMemoryCache } from "@apollo/client";
-import { Camera } from "@vertexvis/viewer/dist/types/scenes";
+import { Camera } from "@vertexvis/viewer/dist/types/lib/scenes";
 import { useRouter } from "next/router";
 import {
   Dispatch as ReactDispatch,

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { Matrix4 } from "@vertexvis/vertex-api-client";
+import { Matrix4 } from "@vertexvis/api-client-node";
 import * as Math3d from "math3d";
 
 import { Resolvers } from "../../generated/graphql/resolvers";
