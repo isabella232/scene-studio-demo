@@ -43,75 +43,76 @@ export function SceneItemSidebar({
       <PropertiesSection sceneViewItem={data?.sceneViewItem} />
       <div className="w-full px-2 border-b">
         <Collapsible title="TRANSFORMS">
-          <div className="grid grid-cols-3 grid-rows-6 gap-x-2 mb-4 text-sm text-neutral-700">
-            <div className="flex items-center col-span-full">Position (mm)</div>
-            <NumericInput
-              label="X"
-              value={editableTransform?.committedTransform.position.x || 0}
-              disabled={editableTransform == null}
-              onBlur={numericInputHandler(editableTransform, (x, t) => ({
-                ...t,
-                position: { ...t.position, x },
-              }))}
-            />
-            <NumericInput
-              label="Y"
-              value={editableTransform?.committedTransform.position.y || 0}
-              disabled={editableTransform == null}
-              onBlur={numericInputHandler(editableTransform, (y, t) => ({
-                ...t,
-                position: { ...t.position, y },
-              }))}
-            />
-            <NumericInput
-              label="Z"
-              value={editableTransform?.committedTransform.position.z || 0}
-              disabled={editableTransform == null}
-              onBlur={numericInputHandler(editableTransform, (z, t) => ({
-                ...t,
-                position: { ...t.position, z },
-              }))}
-            />
-            <div className="flex items-center col-span-full">Rotation</div>
-            <NumericInput
-              label="X"
-              value={editableTransform?.committedTransform.rotation.x || 0}
-              disabled={editableTransform == null}
-              onBlur={numericInputHandler(editableTransform, (x, t) => ({
-                ...t,
-                rotation: { ...t.rotation, x },
-              }))}
-            />
-            <NumericInput
-              label="Y"
-              value={editableTransform?.committedTransform.rotation.y || 0}
-              disabled={editableTransform == null}
-              onBlur={numericInputHandler(editableTransform, (y, t) => ({
-                ...t,
-                rotation: { ...t.rotation, y },
-              }))}
-            />
-            <NumericInput
-              label="Z"
-              value={editableTransform?.committedTransform.rotation.z || 0}
-              disabled={editableTransform == null}
-              onBlur={numericInputHandler(editableTransform, (z, t) => ({
-                ...t,
-                rotation: { ...t.rotation, z },
-              }))}
-            />
-            <div className="flex items-center col-span-full">Scale</div>
-            <NumericInput
-              value={editableTransform?.committedTransform.scale || 1}
-              min="0.01"
-              step="0.01"
-              disabled={editableTransform == null}
-              onBlur={numericInputHandler(editableTransform, (scale, t) => ({
-                ...t,
-                scale,
-              }))}
-            />
-          </div>
+          {editableTransform == null ? (
+            <div className="my-4 text-sm text-neutral-700 text-center">
+              <p>Select a part to transform.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-3 grid-rows-6 gap-x-2 mb-4 text-sm text-neutral-700">
+              <div className="flex items-center col-span-full">
+                Position (mm)
+              </div>
+              <NumericInput
+                label="X"
+                value={editableTransform.committedTransform.position.x || 0}
+                onBlur={numericInputHandler(editableTransform, (x, t) => ({
+                  ...t,
+                  position: { ...t.position, x },
+                }))}
+              />
+              <NumericInput
+                label="Y"
+                value={editableTransform.committedTransform.position.y || 0}
+                onBlur={numericInputHandler(editableTransform, (y, t) => ({
+                  ...t,
+                  position: { ...t.position, y },
+                }))}
+              />
+              <NumericInput
+                label="Z"
+                value={editableTransform.committedTransform.position.z || 0}
+                onBlur={numericInputHandler(editableTransform, (z, t) => ({
+                  ...t,
+                  position: { ...t.position, z },
+                }))}
+              />
+              <div className="flex items-center col-span-full">Rotation</div>
+              <NumericInput
+                label="X"
+                value={editableTransform.committedTransform.rotation.x || 0}
+                onBlur={numericInputHandler(editableTransform, (x, t) => ({
+                  ...t,
+                  rotation: { ...t.rotation, x },
+                }))}
+              />
+              <NumericInput
+                label="Y"
+                value={editableTransform.committedTransform.rotation.y || 0}
+                onBlur={numericInputHandler(editableTransform, (y, t) => ({
+                  ...t,
+                  rotation: { ...t.rotation, y },
+                }))}
+              />
+              <NumericInput
+                label="Z"
+                value={editableTransform.committedTransform.rotation.z || 0}
+                onBlur={numericInputHandler(editableTransform, (z, t) => ({
+                  ...t,
+                  rotation: { ...t.rotation, z },
+                }))}
+              />
+              <div className="flex items-center col-span-full">Scale</div>
+              <NumericInput
+                value={editableTransform.committedTransform.scale || 1}
+                min="0.01"
+                step="0.01"
+                onBlur={numericInputHandler(editableTransform, (scale, t) => ({
+                  ...t,
+                  scale,
+                }))}
+              />
+            </div>
+          )}
         </Collapsible>
       </div>
     </Panel>
