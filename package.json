@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@apollo/client": "^3.7.3",
+    "@apollo/client": "^3.7.5",
     "@types/lodash.isequal": "^4.5.6",
     "@vertexvis/api-client-node": "^0.20.5",
     "@vertexvis/viewer-react": "^0.11",
