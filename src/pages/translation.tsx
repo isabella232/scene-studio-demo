@@ -1,5 +1,5 @@
 import { Environment } from "@vertexvis/viewer";
-import { defineCustomElements } from "@vertexvis/viewer-react";
+import { defineCustomElements } from "@vertexvis/viewer/loader";
 import React from "react";
 
 import { fetchItemOnTap, Viewer } from "../components/Viewer";

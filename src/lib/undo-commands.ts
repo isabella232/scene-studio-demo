@@ -11,17 +11,6 @@ import { UndoCommand } from "./undo";
 
 type ViewerRef = React.MutableRefObject<HTMLVertexViewerElement | null>;
 
-const selectionColorMaterial = {
-  ...ColorMaterial.create(255, 255, 0),
-  glossiness: 4,
-  specular: {
-    r: 255,
-    g: 255,
-    b: 255,
-    a: 0,
-  },
-};
-
 const materialOverrideFragment = gql`
   fragment MaterialOverrideSceneViewItem on SceneViewItem {
     materialOverride {
@@ -302,8 +291,8 @@ export function selectItem(
         { type: "select-item", selectedItemId: item.id },
         { type: "select-item", selectedItemId: state.selectedItemId }
       ),
-      deselect(viewer, state.selectedItemId, selectionColorMaterial),
-      select(viewer, cache, item, selectionColorMaterial)
+      deselect(viewer, state.selectedItemId),
+      select(viewer, cache, item)
     );
   } else {
     return composite(
@@ -312,7 +301,7 @@ export function selectItem(
         { type: "select-item", selectedItemId: item.id },
         { type: "select-item", selectedItemId: undefined }
       ),
-      select(viewer, cache, item, selectionColorMaterial)
+      select(viewer, cache, item)
     );
   }
 }
@@ -340,7 +329,7 @@ export function deselectItem(
         { type: "select-item", selectedItemId: undefined },
         { type: "select-item", selectedItemId: state.selectedItemId }
       ),
-      deselect(viewer, item.id, selectionColorMaterial)
+      deselect(viewer, item.id)
     );
   } else {
     return undefined;
@@ -350,8 +339,7 @@ export function deselectItem(
 export function select(
   viewer: ViewerRef,
   cache: InMemoryCache,
-  item: Pick<SceneViewItem, "id">,
-  material: ColorMaterial.ColorMaterial
+  item: Pick<SceneViewItem, "id">
 ): UndoCommand {
   return itemCommand(
     viewer,
@@ -366,7 +354,7 @@ export function select(
         `,
         data: { selected: true },
       });
-      return op.select(material);
+      return op.select();
     },
     (op) => {
       cache.writeFragment({
@@ -383,16 +371,12 @@ export function select(
   );
 }
 
-export function deselect(
-  viewer: ViewerRef,
-  itemId: string,
-  material: ColorMaterial.ColorMaterial
-): UndoCommand {
+export function deselect(viewer: ViewerRef, itemId: string): UndoCommand {
   return itemCommand(
     viewer,
     itemId,
     (op) => op.deselect(),
-    (op) => op.select(material)
+    (op) => op.select()
   );
 }
 

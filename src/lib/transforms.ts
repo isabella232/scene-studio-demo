@@ -1,6 +1,7 @@
 import { Dimensions, Point, Vector3 } from "@vertexvis/geometry";
 import { Camera } from "@vertexvis/viewer/dist/types/lib/scenes";
 import * as Math3d from "math3d";
+import { PerspectiveCamera } from "@vertexvis/viewer/dist/types/lib/scenes/camera";
 
 import { SceneViewItem, Transform } from "../generated/graphql/react";
 import { rotation, scale } from "./math3d";
@@ -12,11 +13,13 @@ export const calculateTranslation = (
   dimensions: Dimensions.Dimensions,
   sceneViewItem: Pick<SceneViewItem, "transform" | "worldTransform">
 ): Transform => {
-  const viewVector = camera.viewVector();
+  const perspectiveCameraFovY = (camera as PerspectiveCamera).fovY ?? 0;
+
+  const viewVector = camera.viewVector;
   const normalizedViewVector = Vector3.normalize(viewVector);
   const screenPlaneWorldHeight =
     Vector3.magnitude(Vector3.subtract(camera.lookAt, camera.position)) *
-    Math.tan((Math.PI / 180) * camera.fovY);
+    Math.tan((Math.PI / 180) * perspectiveCameraFovY);
   const screenPlaneWorldWidth = camera.aspectRatio * screenPlaneWorldHeight;
 
   const percentWidth = (currentPoint.x - originPoint.x) / dimensions.width;

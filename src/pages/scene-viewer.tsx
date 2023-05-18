@@ -1,5 +1,6 @@
 import { Environment } from "@vertexvis/viewer";
-import { JSX as ViewerJSX, VertexSceneTree } from "@vertexvis/viewer-react";
+import type { JSX as ViewerJSX } from "@vertexvis/viewer";
+import { VertexSceneTree } from "@vertexvis/viewer-react";
 import React from "react";
 
 import { fetchItemOnTap, Viewer } from "../components/Viewer";

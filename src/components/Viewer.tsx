@@ -1,6 +1,9 @@
 import { TapEventDetails } from "@vertexvis/viewer";
-import {
+import type {
   JSX as ViewerJSX,
+  VertexViewerCustomEvent,
+} from "@vertexvis/viewer";
+import {
   VertexViewer,
   VertexViewerToolbar,
   VertexViewerViewCube,
@@ -62,7 +65,7 @@ export function fetchItemOnTap<P extends ViewerProps>(
       <WrappedViewer
         viewer={viewer}
         {...props}
-        onTap={async (event: CustomEvent<TapEventDetails>) => {
+        onTap={async (event: VertexViewerCustomEvent<TapEventDetails>) => {
           // Forward event to onTap handler passed on props
           if (props.onTap) {
             props.onTap(event);

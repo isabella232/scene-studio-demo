@@ -8,6 +8,7 @@ import { fetchSceneViewItemFullTransform } from "../../lib/graphql";
 import { calculateTranslation } from "../../lib/transforms";
 import { UndoManager } from "../../lib/undo";
 import { transform } from "../../lib/undo-commands";
+import type { VertexViewerCustomEvent } from "@vertexvis/viewer";
 
 export interface TranslateOnMoveProps extends ViewerProps {
   undoStack: UndoManager;
@@ -141,7 +142,9 @@ export function translateOnMove<P extends ViewerProps>(
           viewer={viewer}
           {...props}
           onSelect={onSelect}
-          onDimensionschange={(event: CustomEvent<Dimensions.Dimensions>) => {
+          onDimensionschange={(
+            event: VertexViewerCustomEvent<Dimensions.Dimensions>
+          ) => {
             if (props.onDimensionschange) {
               props.onDimensionschange(event);
             }

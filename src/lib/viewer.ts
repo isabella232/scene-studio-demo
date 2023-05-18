@@ -1,5 +1,5 @@
 import { ConnectionStatus } from "@vertexvis/viewer/dist/types/components/viewer/viewer";
-import { defineCustomElements } from "@vertexvis/viewer-react";
+import { defineCustomElements } from "@vertexvis/viewer/loader";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
 export interface ViewerContext {
